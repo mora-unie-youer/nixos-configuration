@@ -11,9 +11,7 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/e602db02-4687-4294-939a-5da252e7b43d"; }
-    ];
+  swapDevices = [ ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
