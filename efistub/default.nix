@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 
-let
-  inherit (pkgs.lib) mkOption mkIf;
+with pkgs.lib;
 
+let
   options = {
     boot.loader.efiStub = {
       enable = mkOption {
