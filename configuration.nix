@@ -13,9 +13,9 @@
   networking.hostName = "purhomb-mora"; # Define your hostname.
   networking.wireless.enable = true;    # Enables wireless support via wpa_supplicant.
 
+  # I like to use UTC on my computers
+  time.timeZone = null;
 
-  # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
