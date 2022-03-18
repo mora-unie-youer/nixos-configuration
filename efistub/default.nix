@@ -44,7 +44,7 @@ let
     isExecutable = true;
 
     inherit (pkgs) bash;
-    path = [pkgs.coreutils pkgs.gnugrep pkgs.glibc] ++ (pkgs.stdenv.lib.optionals config.boot.loader.efiStub.useEfibootmgr [pkgs.efibootmgr]);
+    path = [pkgs.coreutils pkgs.gnugrep pkgs.gnused pkgs.glibc] ++ (pkgs.stdenv.lib.optionals config.boot.loader.efiStub.useEfibootmgr [pkgs.efibootmgr]);
     inherit (config.boot.loader.efi) efiSysMountPoint;
     inherit (config.boot.loader.efiStub) useEfibootmgr efiDisk efiPart;
   };
