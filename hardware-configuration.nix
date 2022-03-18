@@ -13,6 +13,9 @@
 
   swapDevices = [ ];
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
+  networking.useDHCP = true;
+  # NOTE: I will add interfaces here when I will make first NixOS install.
+
+  powerManagement.cpuFreqGovernor    = lib.mkDefault "ondemand";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
