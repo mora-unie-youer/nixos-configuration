@@ -7,9 +7,12 @@
   imports = [ ];
 
   boot.initrd.availableKernelModules = [ "ehci_pci" "ahci" "usbhid" "sd_mod" ];
-  boot.initrd.kernelModules = [ "dm-snapshot" ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot.initrd.kernelModules          = [ "dm-snapshot" ];
+  boot.kernelModules                 = [ "kvm-intel" ];
+  boot.kernelParams                  = [ " drm.edid_firmware=DVI-I-1:edid/G2255.bin " ];
+  boot.extraModulePackages           = [ ];
+
+  hardware.firmware = [ ];
 
   swapDevices = [ ];
 
