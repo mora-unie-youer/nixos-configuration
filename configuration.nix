@@ -4,14 +4,22 @@
 
 { config, pkgs, ... }:
 
+let
+  edid-G2255 = pkgs.callPackage ./edid {};
+in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
+  boot.kernelParams = [ "drm.edid_firmware=DVI-I-1:edid/G2255.bin" ];
+  hardware.firmware = with pkgs; [ edid-G2255 ];
+
   networking.hostName = "purhomb-mora"; # Define your hostname.
   networking.wireless.enable = true;    # Enables wireless support via wpa_supplicant.
+  networking.useDHCP = true;
+  # NOTE: I will add interfaces here when I will make first NixOS install.
 
   # I like to use UTC on my computers
   time.timeZone = null;
