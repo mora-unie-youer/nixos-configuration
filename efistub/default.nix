@@ -48,8 +48,6 @@ let
     inherit (config.boot.loader.efi) efiSysMountPoint;
     inherit (config.boot.loader.efiStub) useEfibootmgr efiDisk efiPart;
   };
-
-  platform = pkgs.stdenv.platform;
 in
 {
   require = [ options ];
@@ -59,6 +57,6 @@ in
        config.boot.kernelPackages.kernel.features.efiBootStub); true)) {
     build = { menuBuilder = efiStubBuilder; };
     boot.loader.id = "efiStub";
-    boot.loader.kernelFile = platform.kernelTarget;
+    boot.loader.kernelFile = pkgs.stdenv.platform.kernelTarget;
   };
 }
