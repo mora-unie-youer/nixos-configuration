@@ -16,35 +16,14 @@
   # I like to use UTC on my computers
   time.timeZone = null;
 
+  sound.enable = true;
+  # I'm using Pipewire :3
+  hardware.pipewire.enable     = true;
+  hardware.pipewire.alsa       = true;
+  hardware.pipewire.pulseaudio = true;
+  hardware.pipewire.jack       = true;
 
 
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  # };
-
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-
-  
-
-  # Configure keymap in X11
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # users.users.jane = {
