@@ -3,10 +3,12 @@
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
 
+let
+  edid-G2255 = pkgs.callPackage ./edid {};
+in
+
 {
-  imports = [
-    ./edid # EDID package
-  ];
+  imports = [ ];
 
   boot.initrd.availableKernelModules = [ "ehci_pci" "ahci" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules          = [ "dm-snapshot" ];
