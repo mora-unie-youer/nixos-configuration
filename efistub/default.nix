@@ -3,6 +3,9 @@
 with pkgs.lib;
 
 let
+  cfg = config.boot.loader.efiStub;
+in
+{
   options = {
     boot.loader.efiStub = {
       enable = mkOption {
@@ -36,27 +39,29 @@ let
       };
     };
   };
-in
 
-let
-  efiStubBuilder = pkgs.substituteAll {
-    src = ./efistub-builder.sh;
-    isExecutable = true;
+  config = mkMerge [
+    (mkIf cfg.enable {
+      system.build.installBootLoader = pkgs.substituteAll {
+        src = ./efistub-builder.sh;
+        isExecutable = true;
 
-    inherit (pkgs) bash;
-    path = [pkgs.coreutils pkgs.gnugrep pkgs.gnused pkgs.glibc] ++ (pkgs.stdenv.lib.optionals config.boot.loader.efiStub.useEfibootmgr [pkgs.efibootmgr]);
-    inherit (config.boot.loader.efi) efiSysMountPoint;
-    inherit (config.boot.loader.efiStub) useEfibootmgr efiDisk efiPart;
-  };
-in
-{
-  require = [ options ];
+        inherit (pkgs) bash;
+        path = [pkgs.coreutils pkgs.gnugrep pkgs.gnused pkgs.glibc] ++ (pkgs.stdenv.lib.optionals config.boot.loader.efiStub.useEfibootmgr [pkgs.efibootmgr]);
+        inherit (config.boot.loader.efi) efiSysMountPoint;
+        inherit (config.boot.loader.efiStub) useEfibootmgr efiDisk efiPart;
+      };
 
-  system = mkIf (config.boot.loader.efiStub.enable && (assert
-      (config.boot.kernelPackages.kernel.features ? efiBootStub &&
-       config.boot.kernelPackages.kernel.features.efiBootStub); true)) {
-    build = { menuBuilder = efiStubBuilder; };
-    boot.loader.id = "efiStub";
-    boot.loader.kernelFile = pkgs.stdenv.platform.kernelTarget;
-  };
+      system.boot.loader.id = "efiStub";
+      system.boot.loader.kernelFile = pkgs.stdenv.platform.kernelTarget;
+
+      assertions = [
+        {
+          assertion = config.boot.kernelPackages.kernel.features ? efiBootStub &&
+                      config.boot.kernelPackages.kernel.features.efiBootStub;
+          message   = "Your kernel must support EFISTUB feature";
+        }
+      ];
+    })
+  ];
 }
