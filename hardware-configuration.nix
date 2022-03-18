@@ -4,7 +4,9 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [ ];
+  imports = [
+    ./edid # EDID package
+  ];
 
   boot.initrd.availableKernelModules = [ "ehci_pci" "ahci" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules          = [ "dm-snapshot" ];
@@ -12,8 +14,7 @@
   boot.kernelParams                  = [ " drm.edid_firmware=DVI-I-1:edid/G2255.bin " ];
   boot.extraModulePackages           = [ ];
 
-  # TODO: Create package with G2255.bin EDID
-  hardware.firmware = [ ];
+  hardware.firmware = with pkgs; [ edid-G2255 ];
 
   swapDevices = [ ];
 
