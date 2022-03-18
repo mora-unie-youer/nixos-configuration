@@ -26,10 +26,6 @@
   users.users.mora = {
     description = "Mora Unie Youer";
     isNormalUser = true;
-
-    createHome = true;
-
-    group = "users";
     extraGroups = [ "wheel" ];
   };
 
