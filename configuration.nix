@@ -13,6 +13,9 @@ in
       ./hardware-configuration.nix
     ];
 
+  boot.loader.efi.canTouchEfiVariables = false;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+
   boot.kernelParams = [ "drm.edid_firmware=DVI-I-1:edid/G2255.bin" ];
   hardware.firmware = with pkgs; [ edid-G2255 ];
 
