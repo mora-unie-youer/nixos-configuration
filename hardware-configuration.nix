@@ -12,6 +12,7 @@
   boot.kernelParams                  = [ " drm.edid_firmware=DVI-I-1:edid/G2255.bin " ];
   boot.extraModulePackages           = [ ];
 
+  # TODO: Create package with G2255.bin EDID
   hardware.firmware = [ ];
 
   swapDevices = [ ];
