@@ -11,10 +11,15 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      # Include my EFISTUB module
+      ./efistub
     ];
 
+  boot.loader.efiStub.enable = true;
+  boot.loader.efiStub.useEfibootmgr = true;
+
   boot.loader.efi.canTouchEfiVariables = false;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot.loader.efi.efiSysMountPoint     = "/boot/efi";
 
   boot.kernelParams = [ "drm.edid_firmware=DVI-I-1:edid/G2255.bin" ];
   hardware.firmware = with pkgs; [ edid-G2255 ];
