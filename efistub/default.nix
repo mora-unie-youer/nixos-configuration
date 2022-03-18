@@ -4,39 +4,35 @@ let
   inherit (pkgs.lib) mkOption mkIf;
 
   options = {
-    boot = {
-      loader = {
-        efiStub = {
-          enable = mkOption {
-            default = false;
-            description = ''
-              Whether to use EFISTUB feature.
-              If enabled, copies kernel and initramfs to EFI partition to make
-              system bootable.
-            '';
-          };
+    boot.loader.efiStub = {
+      enable = mkOption {
+        default = false;
+        description = ''
+          Whether to use EFISTUB feature.
+          If enabled, copies kernel and initramfs to EFI partition to make
+          system bootable.
+        '';
+      };
 
-          useEfibootmgr = mkOption {
-            default = false;
-            description = ''
-              Whether to run efibootmgr to add boot entries.
-            '';
-          };
+      useEfibootmgr = mkOption {
+        default = false;
+        description = ''
+          Whether to run efibootmgr to add boot entries.
+        '';
+      };
 
-          efiDisk = mkOption {
-            default = "/dev/sda";
-            description = ''
-              The disk device with EFI partition
-            '';
-          };
+      efiDisk = mkOption {
+        default = "/dev/sda";
+        description = ''
+          The disk device with EFI partition
+        '';
+      };
 
-          efiPart = mkOption {
-            default = 1;
-            description = ''
-              EFI partition number on the disk
-            '';
-          };
-        };
+      efiPart = mkOption {
+        default = 1;
+        description = ''
+          EFI partition number on the disk
+        '';
       };
     };
   };
