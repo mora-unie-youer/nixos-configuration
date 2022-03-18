@@ -18,10 +18,13 @@
 
   sound.enable = true;
   # I'm using Pipewire :3
-  hardware.pipewire.enable     = true;
-  hardware.pipewire.alsa       = true;
-  hardware.pipewire.pulseaudio = true;
-  hardware.pipewire.jack       = true;
+  services.pipewire = {
+    enable = true;
+
+    alsa.enable  = true;
+    pulse.enable = true;
+    jack.enable  = true;
+  };
 
   users.users.mora = {
     description = "Mora Unie Youer";
