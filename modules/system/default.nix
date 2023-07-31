@@ -1,8 +1,13 @@
+{ inputs }:
+
 _:
 
 {
   # Importing NixOS-related modules
   imports = [
+    # Importing all required modules
+    inputs.lanzaboote.nixosModules.lanzaboote
+
     # NixOS configuration core
     ./core.nix
 

@@ -9,6 +9,13 @@ _:
         canTouchEfiVariables = true;
         efiSysMountPoint = "/efi";
       };
+
+      # Setting up Lanzaboote bootloader
+      lanzaboote = {
+        enable = true;
+        privateKeyFile = "/etc/secureboot/keys/db/db.key";
+        publicKeyFile = "/etc/secureboot/keys/db/db.pem";
+      };
     };
   };
 }

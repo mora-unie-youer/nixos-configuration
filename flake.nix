@@ -15,6 +15,15 @@
     flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
     flake-utils.url = "github:numtide/flake-utils";
 
+    # Secure Boot alternative to GRUB bootloader in NixOS
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs = {
+        flake-compat.follows = "flake-compat";
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
 
   outputs = {
@@ -33,7 +42,9 @@
       # NixOS system for my Thinkpad P53s laptop
       thinkpad-p53s = mkSystem {
         inherit system;
-        modules = [];
+        modules = [
+          (import ./modules/system { inherit inputs; })
+        ];
       };
     };
   };
