@@ -30,6 +30,13 @@
     self,
 
     nixpkgs,
+    nixpkgs-stable,
+    home-manager,
+
+    flake-compat,
+    flake-utils,
+
+    lanzaboote,
 
     ...
   } @ inputs: let
@@ -43,7 +50,7 @@
       thinkpad-p53s = mkSystem {
         inherit system;
         modules = [
-          (import ./modules/system { inherit inputs; })
+          (import ./modules/system { inherit lanzaboote; })
         ];
       };
     };
