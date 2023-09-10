@@ -29,5 +29,9 @@ _:
         options = [ "noauto" ];
       };
     };
+
+    swapDevices = [
+      { device = "/dev/disk/by-uuid/e06bf570-8bb5-409b-a708-6d6435ad1481"; }
+    ];
   };
 }
