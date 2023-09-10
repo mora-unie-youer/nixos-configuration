@@ -40,8 +40,23 @@
       # Enabling fwupd
       fwupd.enable = true;
 
+      # Adding modules for D-Bus
+      dbus.packages = with pkgs; [ dconf gcr ];
+
+      # Configuring audio server
+      pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        jack.enable = true;
+        pulse.enable = true;
+      };
+
       # Enabling udisks2
       udisks2.enable = true;
+
+      # Enabling upower
+      upower.enable = true;
     };
 
     # Enabling some disabled documentation

@@ -24,6 +24,20 @@
       };
     };
 
+    # Configuring network hardware
+    networking = {
+      # Setting hostname for device
+      hostName = "thinkpad-p53s";
+
+      # Enabling DHCP for interfaces
+      interfaces.enp0s31f6.useDHCP = true;
+      interfaces.wlp0s20f3.useDHCP = true;
+
+      # Configuring network manager
+      networkmanager.enable = true;
+      wireless.interfaces = [ "wlp0s20f3" ];
+    };
+
     # Configuring some useful services for Thinkpad P53s
     services = {
       # Configuring service for fingerprint scanner
