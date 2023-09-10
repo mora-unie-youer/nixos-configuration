@@ -1,4 +1,4 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 
 {
   config = {
@@ -16,6 +16,14 @@
         intelBusId = "PCI:0:2:0";
         nvidiaBusId = "PCI:60:0:0";
       };
+
+      # Installing OpenGL drivers
+      opengl.extraPackages = with pkgs; [
+        intel-media-driver
+        libvdpau-va-gl
+        vaapiIntel
+        vaapiVdpau
+      ];
 
       # Configuring Trackpoint
       trackpoint = {

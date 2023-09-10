@@ -9,6 +9,9 @@
     # Setting up system timezone to UTC
     time.timeZone = "UTC";
 
+    # Enabling sound
+    sound.enable = true;
+
     # Setting up global (system) environment
     environment = {
       # Including some packages into system environment
@@ -33,6 +36,48 @@
         #curl -> is already installed
         wget
       ];
+    };
+
+    # Setting up some generic hardware
+    hardware = {
+      # Configuring bluetooth service if needed
+      bluetooth = {
+        package = pkgs.bluezFull;
+        settings = {
+          General = {
+            Enable = "Source,Sink,Media,Socket";
+            Experimental = true;
+          };
+        };
+      };
+
+      # Enabling OpenGL
+      opengl = {
+        enable = true;
+        driSupport32Bit = true;
+      };
+
+      # Installing OpenTabletDriver
+      opentabletdriver.enable = true;
+
+      # Configuring scanner support
+      sane = {
+        enable = true;
+        # extraBackends = with pkgs; [ hplipWithPlugin ];
+        extraBackends = with pkgs; [ hplip ];
+      };
+    };
+
+    # Configuring security modules
+    security = {
+      # Enabling Polkit
+      polkit.enable = true;
+
+      # Configuring PAM services
+      pam.services = {
+        # Allowing `swaylock` to use it
+        swaylock = {};
+      };
     };
 
     # Setting up really important services
