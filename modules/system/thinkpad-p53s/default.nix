@@ -5,6 +5,7 @@ _:
   imports = [
     ./filesystem.nix
     ./hardware.nix
+    ./software.nix
     ./users.nix
   ];
 }
