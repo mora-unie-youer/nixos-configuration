@@ -8,6 +8,9 @@ _:
     # Importing all required modules
     lanzaboote.nixosModules.lanzaboote
 
+    # Configuration of Nixpkgs
+    ./nixpkgs.nix
+
     # NixOS configuration core
     ./core.nix
 

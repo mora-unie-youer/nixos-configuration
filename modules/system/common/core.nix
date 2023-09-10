@@ -18,6 +18,20 @@
       systemPackages = with pkgs; [
         # ~~Just to look cool~~
         neofetch
+        onefetch
+
+        # Some terminal multiplexers
+        tmux
+        zellij
+
+        # Some archive managers
+        p7zip
+        unrar
+        zip
+
+        # Some access to internet
+        #curl -> is already installed
+        wget
       ];
     };
 
