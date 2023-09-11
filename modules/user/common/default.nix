@@ -1,8 +1,10 @@
-{ pkgs, ... }:
+_:
 
 {
   # Importing everything related to common user
-  imports = [];
+  imports = [
+    ./software.nix
+  ];
 
   # Configuring common user
   config = {
@@ -13,9 +15,6 @@
 
       # "Global" environment variables
       sessionVariables = {};
-
-      # "Global" packages
-      packages = with pkgs; [];
     };
   };
 }
