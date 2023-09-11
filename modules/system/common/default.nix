@@ -1,4 +1,4 @@
-{ lanzaboote }:
+{ hyprland, lanzaboote }:
 
 _:
 
@@ -7,6 +7,8 @@ _:
   imports = [
     # Importing all required modules
     lanzaboote.nixosModules.lanzaboote
+    # Adding Hyprland module for XDG portal
+    hyprland.nixosModules.default
 
     # Configuration of Nixpkgs
     ./nixpkgs.nix

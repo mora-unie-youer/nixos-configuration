@@ -15,6 +15,12 @@
     flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
     flake-utils.url = "github:numtide/flake-utils";
 
+    # Latest Hyprland changes and XDG portal
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Secure Boot alternative to GRUB bootloader in NixOS
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
@@ -36,6 +42,7 @@
     flake-compat,
     flake-utils,
 
+    hyprland,
     lanzaboote,
 
     ...
@@ -47,7 +54,7 @@
 
       modules = [
         # "Generic" system module
-        (import ./modules/system/common { inherit lanzaboote; })
+        (import ./modules/system/common { inherit lanzaboote hyprland; })
 
         # Setting some state version
         { system.stateVersion = "23.11"; }
