@@ -27,7 +27,7 @@
     ];
 
     # Installing some default fonts which are used everywhere
-    fonts.fonts = with pkgs; [ dejavu_fonts ];
+    fonts.packages = with pkgs; [ dejavu_fonts ];
 
     # Configuring some programs
     programs = {
