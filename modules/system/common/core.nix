@@ -13,30 +13,7 @@
     sound.enable = true;
 
     # Setting up global (system) environment
-    environment = {
-      # Including some packages into system environment
-      #
-      # Should be used for packages that I use the most at any user
-      # or everytime install using `nix-shell -p`
-      systemPackages = with pkgs; [
-        # ~~Just to look cool~~
-        neofetch
-        onefetch
-
-        # Some terminal multiplexers
-        tmux
-        zellij
-
-        # Some archive managers
-        p7zip
-        unrar
-        zip
-
-        # Some access to internet
-        #curl -> is already installed
-        wget
-      ];
-    };
+    environment = {};
 
     # Setting up some generic hardware
     hardware = {
@@ -87,15 +64,6 @@
 
       # Adding modules for D-Bus
       dbus.packages = with pkgs; [ dconf gcr ];
-
-      # Configuring audio server
-      pipewire = {
-        enable = true;
-        alsa.enable = true;
-        alsa.support32Bit = true;
-        jack.enable = true;
-        pulse.enable = true;
-      };
 
       # Enabling udisks2
       udisks2.enable = true;
