@@ -19,5 +19,8 @@ _:
     # NixOS configuration bootloader and filesystem
     ./boot.nix
     ./filesystem.nix
+
+    # NixOS global software
+    ./software.nix
   ];
 }
