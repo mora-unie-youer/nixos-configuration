@@ -1,6 +1,11 @@
-_:
+{ modulesPath, ... }:
 
 {
+  # Importing some kernel modules automatically
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
+
   config = {
     # Setting up all boot(-loader)-related things
     boot = {
