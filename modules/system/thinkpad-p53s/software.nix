@@ -28,6 +28,18 @@
           ensureClauses = { superuser = true; };
         }];
       };
+
+      # Enabling vaultwarden service
+      vaultwarden = {
+        enable = true;
+        backupDir = "/data/.vault-backup";
+        environmentFile = "/var/lib/bitwarden_rs/env";
+
+        config = {
+          ROCKET_ADDRESS = "0.0.0.0";
+          ROCKET_PORT = "8222";
+        };
+      };
     };
 
     # Configuring virtualization software
