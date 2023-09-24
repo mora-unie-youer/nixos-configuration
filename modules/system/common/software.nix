@@ -26,8 +26,16 @@
       wget
     ];
 
-    # Installing some default fonts which are used everywhere
-    fonts.packages = with pkgs; [ dejavu_fonts ];
+    # Configuring fonts and fontconfig
+    fonts = {
+      # Configuring fontconfig options
+      fontconfig = {
+        useEmbeddedBitmaps = true;
+      };
+
+      # Installing some default fonts which are used everywhere
+      packages = with pkgs; [ dejavu_fonts ];
+    };
 
     # Configuring some programs
     programs = {
