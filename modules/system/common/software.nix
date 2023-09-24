@@ -45,6 +45,10 @@
         enable = true;
         enableSSHSupport = true;
       };
+
+      # Enabling shells
+      fish.enable = true;
+      zsh.enable = true;
     };
 
     # Configuring some services

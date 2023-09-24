@@ -1,4 +1,4 @@
-_:
+{ pkgs, ... }:
 
 {
   # Configuring users for Thinkpad P53s
@@ -8,6 +8,7 @@ _:
       mora = {
         isNormalUser = true;
         extraGroups = [ "adbusers" "audio" "docker" "input" "libvirtd" "lp" "scanner" "video" "wheel" ];
+        shell = pkgs.fish;
       };
     };
   };

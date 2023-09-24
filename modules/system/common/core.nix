@@ -13,7 +13,10 @@
     sound.enable = true;
 
     # Setting up global (system) environment
-    environment = {};
+    environment = {
+      # Adding some shells to /etc/shells
+      shells = with pkgs; [ fish ion nushell zsh ];
+    };
 
     # Setting up some generic hardware
     hardware = {
