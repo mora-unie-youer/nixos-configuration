@@ -16,6 +16,13 @@
       tmux
       zellij
 
+      # Some terminal tools
+      file
+      killall
+
+      # Some editor (best editor tbh)
+      helix
+
       # Some archive managers
       p7zip
       unrar
