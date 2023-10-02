@@ -5,6 +5,8 @@
     # Nix/NixOS related repositories
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.05";
+    # NixOS user repository
+    nurpkgs.url = "github:nix-community/NUR";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -14,6 +16,13 @@
     # Useful Nix Flake libraries
     flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
     flake-utils.url = "github:numtide/flake-utils";
+
+    # Firefox Nightly
+    firefox = {
+      url = "github:colemickens/flake-firefox-nightly";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Latest Hyprland changes and XDG portal
     hyprland = {
@@ -46,11 +55,13 @@
 
     nixpkgs,
     nixpkgs-stable,
+    nurpkgs,
     home-manager,
 
     flake-compat,
     flake-utils,
 
+    firefox,
     hyprland,
     hyprsome,
     lanzaboote,
@@ -74,7 +85,7 @@
     mkUser = additionalModules: home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
 
-      extraSpecialArgs = { inherit hyprsome; };
+      extraSpecialArgs = { inherit firefox hyprsome nurpkgs; };
       modules = [
         # "Generic" user module
         ./modules/user/common

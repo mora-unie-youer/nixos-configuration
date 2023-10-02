@@ -1,8 +1,9 @@
-_:
+{ nurpkgs, ... }:
 
 {
   # Importing everything related to "mora" user
   imports = [
+    ./firefox
     ./input.nix
     ./hyprland.nix
     ./software.nix
@@ -10,10 +11,22 @@ _:
 
   # Configuring common user
   config = {
-    nixpkgs.config = {
-      allowBroken = true;
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
+    # Configuring Nixpkgs and its overlays
+    nixpkgs = {
+      config = {
+        allowBroken = true;
+        allowUnfree = true;
+        allowUnfreePredicate = _: true;
+      };
+
+      overlays = [
+        (final: prev: {
+          nur = import nurpkgs {
+            nurpkgs = prev;
+            pkgs = prev;
+          };
+        })
+      ];
     };
 
     # Configuring home-manager
