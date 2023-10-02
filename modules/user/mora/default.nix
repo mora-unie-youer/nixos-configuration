@@ -1,8 +1,10 @@
-{ pkgs, ... }:
+_:
 
 {
   # Importing everything related to "mora" user
-  imports = [];
+  imports = [
+    ./software.nix
+  ];
 
   # Configuring common user
   config = {
@@ -14,9 +16,6 @@
 
       # "Local" environment variables
       sessionVariables = {};
-
-      # "Local" packages
-      packages = with pkgs; [];
     };
   };
 }
