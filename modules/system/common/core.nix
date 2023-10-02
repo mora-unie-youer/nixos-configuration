@@ -22,7 +22,7 @@
     hardware = {
       # Configuring bluetooth service if needed
       bluetooth = {
-        package = pkgs.bluezFull;
+        package = pkgs.bluez;
         settings = {
           General = {
             Enable = "Source,Sink,Media,Socket";
