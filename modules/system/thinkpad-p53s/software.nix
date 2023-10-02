@@ -54,6 +54,9 @@
           dates = "weekly";
         };
       };
+
+      # Configuring libvirtd
+      libvirtd.enable = true;
     };
   };
 }
