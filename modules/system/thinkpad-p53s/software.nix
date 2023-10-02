@@ -2,6 +2,13 @@
 
 {
   config = {
+    # Configuring some networking
+    networking = {
+      firewall = {
+        allowedTCPPorts = [ 8222 ];
+      };
+    };
+
     # Enabling some services requried for my life
     services = {
       ## Databases
