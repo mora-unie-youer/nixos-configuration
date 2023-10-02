@@ -4,7 +4,29 @@
   # Configuring "generic" user software
   config = {
     # "Global" packages
-    home.packages = with pkgs; [];
+    home.packages = with pkgs; [
+      # Core
+      libnotify
+      xdg-utils
+
+      # Fonts
+      corefonts
+      liberation_ttf
+      (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      noto-fonts
+      noto-fonts-cjk
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      noto-fonts-emoji
+
+      # Shell utilities
+      bottom
+      dua
+      fd
+      lm_sensors
+      htop
+      wl-clipboard
+    ];
 
     # Configuring programs
     programs = {
@@ -25,6 +47,17 @@
 
       # Configuring ZSH
       zsh.enable = true;
+
+      # Configuring zellij
+      zellij = {
+        enable = true;
+        enableBashIntegration = true;
+        enableFishIntegration = true;
+        enableZshIntegration = true;
+      };
+
+      # Configuring FZF
+      fzf.enable = true;
     };
   };
 }
