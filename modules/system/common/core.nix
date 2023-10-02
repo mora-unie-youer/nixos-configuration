@@ -73,6 +73,11 @@
 
       # Enabling upower
       upower.enable = true;
+
+      # Configuring udev
+      udev = {
+        packages = with pkgs; [ stlink ];
+      };
     };
 
     # Enabling some disabled documentation
