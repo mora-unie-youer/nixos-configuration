@@ -57,6 +57,12 @@
         enableZshIntegration = true;
       };
 
+      # Configuring Atuin (Ctrl-R in shell)
+      atuin = {
+        enable = true;
+        flags = [ "--disable-up-arrow" ];
+      };
+
       # Configuring FZF
       fzf.enable = true;
     };

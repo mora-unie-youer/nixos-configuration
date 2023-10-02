@@ -4,6 +4,7 @@
   # Importing everything related to "mora" user
   imports = [
     ./firefox
+    ./git.nix
     ./input.nix
     ./hyprland.nix
     ./software.nix
