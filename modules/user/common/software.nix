@@ -6,6 +6,7 @@
     # "Global" packages
     home.packages = with pkgs; [
       # Core
+      brightnessctl
       libnotify
       xdg-utils
 

@@ -3,6 +3,7 @@ _:
 {
   # Importing everything related to common user
   imports = [
+    ./gtk.nix
     ./software.nix
   ];
 

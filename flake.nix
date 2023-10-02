@@ -21,6 +21,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Hyprland utility to handle workspaces on different monitors
+    hyprsome = {
+      url = "github:/sopa0/hyprsome";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
     # Secure Boot alternative to GRUB bootloader in NixOS
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
@@ -43,6 +52,7 @@
     flake-utils,
 
     hyprland,
+    hyprsome,
     lanzaboote,
 
     ...
@@ -63,6 +73,8 @@
 
     mkUser = additionalModules: home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
+
+      extraSpecialArgs = { inherit hyprsome; };
       modules = [
         # "Generic" user module
         ./modules/user/common
@@ -77,7 +89,10 @@
 
     # My user configurations
     homeConfigurations = {
-      "mora@thinkpad-p53s" = mkUser [ ./modules/user/mora ];
+      "mora@thinkpad-p53s" = mkUser [
+        hyprland.homeManagerModules.default
+        ./modules/user/mora
+      ];
     };
   };
 }
