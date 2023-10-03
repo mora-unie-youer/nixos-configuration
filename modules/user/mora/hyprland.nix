@@ -155,10 +155,14 @@ in
         bindm = $mainMod, mouse:272, movewindow
         bindm = $mainMod, mouse:273, resizewindow
 
-        bind = $mainMod, h, exec, hyprsome focus l
-        bind = $mainMod, j, exec, hyprsome focus d
-        bind = $mainMod, k, exec, hyprsome focus u
-        bind = $mainMod, l, exec, hyprsome focus r
+        #bind = $mainMod, h, exec, hyprsome focus l
+        #bind = $mainMod, j, exec, hyprsome focus d
+        #bind = $mainMod, k, exec, hyprsome focus u
+        #bind = $mainMod, l, exec, hyprsome focus r
+        bind = $mainMod, h, movefocus, l
+        bind = $mainMod, j, movefocus, d
+        bind = $mainMod, k, movefocus, u
+        bind = $mainMod, l, movefocus, r
 
         ## Screenshoting
         bind = , Print, exec, hyprland-screenshot -c current-monitor
