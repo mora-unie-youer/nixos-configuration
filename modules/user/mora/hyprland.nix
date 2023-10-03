@@ -175,6 +175,7 @@ in
         # windowrule = pseudo,fcitx
 
         # Autostart
+        exec-once = waybar
         exec-once = copyq --start-server
         exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
         exec-once = fcitx5 -d -r
