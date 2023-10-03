@@ -1,0 +1,123 @@
+* {
+  font-family: Dejavu Sans, "Font Awesome 6 Free", FiraCode Nerd Font, sans-serif;
+  font-size: 12px;
+  border-radius: 0;
+}
+
+*:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+}
+
+window#waybar {
+  background: rgba(43, 48, 59, 0.9);
+  color: white;
+}
+
+#workspaces button {
+  margin: -2px 0px;
+  border: 0;
+  padding: 0 2px;
+  background: transparent;
+  box-shadow: inset 0 -3px transparent;
+}
+
+#workspaces button:hover {
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 -3px white;
+}
+
+#workspaces button.focused {
+  background: #64727D;
+}
+
+#workspaces button.urgent {
+  background: #EB4D4B;
+}
+
+#backlight,
+#battery,
+#bluetooth,
+#clock,
+#cpu,
+#idle_inhibitor,
+#language,
+#mode,
+#memory,
+#network,
+#pulseaudio,
+#temperature,
+#tray {
+  margin: -5px 0;
+  padding: 0 5px;
+  color: white;
+}
+
+#scratchpad {
+  margin: 0 5px;
+}
+
+#mode {
+  background: #64727D;
+  border-bottom: 3px solid #ffffff;
+}
+
+#idle_inhibitor.activated {
+  background: #ecf0f1;
+  color: #2d3436;
+}
+
+#idle_inhibitor:hover {
+  background: #fff;
+  color: black;
+}
+
+#backlight {
+  background: #F0DE41;
+  color: black;
+}
+
+#battery {
+  background: #1E3888;
+}
+
+#bluetooth {
+  background: #EC9192;
+  color: black;
+}
+
+#clock {
+  background: #E3F2FD;
+  color: black;
+}
+
+#cpu {
+  background: #EC9192;
+  color: black;
+}
+
+#language {
+  background: #0B8199;
+}
+
+#memory {
+  background: #0B8199;
+}
+
+#network {
+  background: #1E3888;
+}
+
+#pulseaudio {
+  background: #F0DE41;
+  color: black;
+}
+
+#temperature {
+  background: #E3F2FD;
+  color: black;
+}
+
+#tray {
+  background: black;
+}

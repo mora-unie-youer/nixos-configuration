@@ -10,6 +10,7 @@
     ./helix.nix
     ./hyprland.nix
     ./software.nix
+    ./waybar
   ];
 
   # Configuring common user
