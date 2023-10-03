@@ -3,6 +3,7 @@
 {
   # Importing everything related to "mora" user
   imports = [
+    ./cursor.nix
     ./firefox
     ./git.nix
     ./input.nix
