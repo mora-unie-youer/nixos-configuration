@@ -6,6 +6,7 @@
     ./firefox
     ./git.nix
     ./input.nix
+    ./mako.nix
     ./hyprland.nix
     ./software.nix
   ];
