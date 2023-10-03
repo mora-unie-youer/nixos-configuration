@@ -11,6 +11,7 @@
       # GUI utilities
       bemenu
       copyq
+      (discord-canary.override { withOpenASAR = true; })
     ];
 
     # Configuring programs
