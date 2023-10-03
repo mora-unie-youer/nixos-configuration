@@ -24,6 +24,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Helix editor
+    helix = {
+      url = "github:helix-editor/helix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
     # Latest Hyprland changes and XDG portal
     hyprland = {
       url = "github:hyprwm/Hyprland";
@@ -62,6 +70,7 @@
     flake-utils,
 
     firefox,
+    helix,
     hyprland,
     hyprsome,
     lanzaboote,
@@ -85,7 +94,7 @@
     mkUser = additionalModules: home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
 
-      extraSpecialArgs = { inherit firefox hyprsome nurpkgs; };
+      extraSpecialArgs = { inherit firefox helix hyprsome nurpkgs; };
       modules = [
         # "Generic" user module
         ./modules/user/common
