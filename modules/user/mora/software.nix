@@ -5,6 +5,9 @@
   config = {
     # "Local" packages
     home.packages = with pkgs; [
+      # Required packages for other packages
+      gcr
+
       # Shell utilities
       ffmpeg-full
 
@@ -22,6 +25,12 @@
     programs = {
       # Configuring foot terminal
       foot.enable = true;
+    };
+
+    # Configuring services
+    services = {
+      # Enabling Gnome Keyring
+      gnome-keyring.enable = true;
     };
   };
 }
