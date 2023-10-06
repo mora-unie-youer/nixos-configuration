@@ -12,6 +12,10 @@
       bemenu
       copyq
       (discord-canary.override { withOpenASAR = true; })
+
+      # Steam
+      steam
+      steam.run
     ];
 
     # Configuring programs
