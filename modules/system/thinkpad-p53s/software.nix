@@ -5,7 +5,7 @@
     # Configuring some networking
     networking = {
       firewall = {
-        allowedTCPPorts = [ 8222 ];
+        allowedTCPPorts = [ 8000 8222 ];
       };
     };
 
