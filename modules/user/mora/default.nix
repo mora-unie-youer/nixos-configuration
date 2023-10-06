@@ -11,6 +11,7 @@
     ./helix.nix
     ./hyprland.nix
     ./software.nix
+    ./swayidle.nix
     ./waybar
   ];
 
