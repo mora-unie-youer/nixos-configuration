@@ -32,19 +32,19 @@
     events = [
       {
         event = "before-sleep";
-        command = "swaylock";
+        command = "${pkgs.swaylock-effects}/bin/swaylock";
       }
     ];
 
     timeouts = [
       {
         timeout = 300;
-        command = "swaylock";
+        command = "${pkgs.swaylock-effects}/bin/swaylock";
       }
       {
         timeout = 420;
-        command = "hyprctl dispatch dpms off";
-        resumeCommand = "hyprctl dispatch dpms on";
+        command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+        resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
       }
     ];
   };
