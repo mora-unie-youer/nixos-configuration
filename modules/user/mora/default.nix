@@ -3,7 +3,6 @@
 {
   # Importing everything related to "mora" user
   imports = [
-    ./cursor.nix
     ./firefox
     ./git.nix
     ./input.nix
@@ -12,6 +11,7 @@
     ./hyprland.nix
     ./software.nix
     ./swayidle.nix
+    ./theme.nix
     ./waybar
   ];
 

@@ -32,4 +32,16 @@ in
     gtk.enable = true;
     x11.enable = true;
   };
+
+  gtk = {
+    iconTheme = {
+      name = "Flat-Remix-Violet-Dark";
+      package = pkgs.flat-remix-icon-theme;
+    };
+
+    theme = {
+      name = "Flat-Remix-GTK-Violet-Darkest-Solid";
+      package = pkgs.flat-remix-gtk;
+    };
+  };
 }
