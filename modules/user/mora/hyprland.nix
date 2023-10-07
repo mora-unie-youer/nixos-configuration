@@ -6,7 +6,7 @@ in
 {
   config = {
     # Adding some Hyprland "plugins"
-    home.packages = [ hyprsome' ];
+    home.packages = with pkgs; [ hyprpicker hyprsome' ];
 
     # Configuring Hyprland
     wayland.windowManager.hyprland = {
@@ -165,11 +165,11 @@ in
         bind = $mainMod, l, movefocus, r
 
         ## Screenshoting
-        bind = , Print, exec, hyprland-screenshot -c current-monitor
-        bind = SHIFT, Print, exec, hyprland-screenshot -c current-window
-        bind = $mainMod, Print, exec, hyprland-screenshot -c -f monitor
-        bind = $mainMod SHIFT, Print, exec, hyprland-screenshot -c -f window
-        bind = CONTROL SHIFT, Print, exec, hyprland-screenshot -c -f region
+        bind = , Print, exec, screenshot -c current-monitor
+        bind = SHIFT, Print, exec, screenshot -c current-window
+        bind = $mainMod, Print, exec, screenshot -c monitor
+        bind = $mainMod SHIFT, Print, exec, screenshot -c window
+        bind = CONTROL SHIFT, Print, exec, screenshot -c region
 
         # Window rules
         # windowrule = pseudo,fcitx

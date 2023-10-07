@@ -10,6 +10,8 @@
 
       # Shell utilities
       ffmpeg-full
+      jq
+      (pkgs.callPackage ./scripts/screenshot.nix { inherit pkgs; })
 
       # GUI utilities
       bemenu
