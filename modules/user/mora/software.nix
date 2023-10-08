@@ -56,6 +56,7 @@
       tmux = {
         enable = true;
         tmuxinator.enable = true;
+        tmuxp.enable = true;
 
         disableConfirmationPrompt = true;
         escapeTime = 0;
@@ -63,7 +64,43 @@
         historyLimit = 10000;
         terminal = "tmux-256color";
 
-        plugins = [];
+        sensibleOnTop = false;
+        plugins = with pkgs.tmuxPlugins; [
+          battery
+          better-mouse-mode
+          cpu
+
+          copycat
+          extrakto
+          jump
+          yank
+
+          {
+            plugin = resurrect;
+            extraConfig = '''';
+          }
+
+          {
+            plugin = continuum;
+            extraConfig = '''';
+          }
+
+          {
+            plugin = catppuccin;
+            extraConfig = "set -g @catppuccin_flavour 'mocha'";
+          }
+        ];
+
+        extraConfig = ''
+          bind-key -n M-k select-pane -U
+          bind-key -n M-Up select-pane -U
+          bind-key -n M-j select-pane -D
+          bind-key -n M-Down select-pane -D
+          bind-key -n M-h select-pane -L
+          bind-key -n M-Left select-pane -L
+          bind-key -n M-l select-pane -R
+          bind-key -n M-Right select-pane -R
+        '';
       };
     };
 
