@@ -44,6 +44,20 @@
           with-keygrip = true;
         };
       };
+
+      # Configuring tmux
+      tmux = {
+        enable = true;
+        tmuxinator.enable = true;
+
+        disableConfirmationPrompt = true;
+        escapeTime = 0;
+        mouse = true;
+        historyLimit = 10000;
+        terminal = "tmux-256color";
+
+        plugins = [];
+      };
     };
 
     # Configuring services
