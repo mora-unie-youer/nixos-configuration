@@ -22,6 +22,12 @@
       # Steam
       steam
       steam.run
+
+      # Wine
+      wineWowPackages.waylandFull
+      wineasio
+      winetricks
+      bottles
     ];
 
     # Configuring programs
