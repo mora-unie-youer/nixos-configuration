@@ -91,6 +91,15 @@
         flags = [ "--disable-up-arrow" ];
       };
 
+      # Enabling bat
+      bat.enable = true;
+
+      # Configuring exa
+      eza = {
+        enable = true;
+        enableAliases = true;
+      };
+
       # Configuring Starship (pretty prompt)
       starship = {
         enable = true;
@@ -103,6 +112,12 @@
 
       # Configuring FZF
       fzf.enable = true;
+
+      # Enabling ripgrep
+      ripgrep.enable = true;
+
+      # Enabling zoxide
+      zoxide.enable = true;
     };
   };
 }
