@@ -17,6 +17,7 @@
       bemenu
       copyq
       (discord-canary.override { withOpenASAR = true; })
+      (pkgs.callPackage ./spotify {})
 
       # Steam
       steam
