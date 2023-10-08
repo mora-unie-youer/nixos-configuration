@@ -62,6 +62,12 @@
       # Enabling bat
       bat.enable = true;
 
+      # Configuring direnv
+      direnv = {
+        enable = true;
+        nix-direnv.enable = true;
+      };
+
       # Configuring exa
       eza = {
         enable = true;
