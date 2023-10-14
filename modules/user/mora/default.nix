@@ -6,6 +6,7 @@
     ./git.nix
     ./input.nix
     ./mako.nix
+    ./mpv.nix
     ./helix.nix
     ./hyprland.nix
     ./software.nix
