@@ -40,6 +40,17 @@
       wineasio
       winetricks
       bottles
+
+      # Anki
+      (pkgs.symlinkJoin {
+        name = "anki";
+        paths = with pkgs; [ anki-bin ];
+        buildInputs = with pkgs; [ makeWrapper ];
+        postBuild = ''
+          # wrapProgram $out/bin/anki --set DISABLE_QT5_COMPAT 1 --set ANKI_WAYLAND 1
+          wrapProgram $out/bin/anki --set ANKI_WAYLAND 1
+        '';
+      })
     ];
 
     # Configuring programs
