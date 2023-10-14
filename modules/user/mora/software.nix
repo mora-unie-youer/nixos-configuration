@@ -117,6 +117,11 @@
           bind-key -n M-S-Right resize-pane -R 2
         '';
       };
+
+      chromium = {
+        enable = true;
+        package = pkgs.google-chrome-dev;
+      };
     };
 
     # Configuring services
