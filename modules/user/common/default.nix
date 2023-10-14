@@ -17,5 +17,8 @@ _:
       # "Global" environment variables
       sessionVariables = {};
     };
+
+    # Enabling XDG
+    xdg.enable = true;
   };
 }
