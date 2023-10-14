@@ -94,14 +94,27 @@
         ];
 
         extraConfig = ''
+          bind-key -n M-n split-window -h
+          bind-key -n M-N split-window -v
+          bind-key -n M-x kill-pane
+          bind-key -n M-X kill-pane -a
+
           bind-key -n M-k select-pane -U
           bind-key -n M-Up select-pane -U
+          bind-key -n M-K resize-pane -U 2
+          bind-key -n M-S-Up resize-pane -U 2
           bind-key -n M-j select-pane -D
           bind-key -n M-Down select-pane -D
+          bind-key -n M-J resize-pane -D 2
+          bind-key -n M-S-Down resize-pane -D 2
           bind-key -n M-h select-pane -L
           bind-key -n M-Left select-pane -L
+          bind-key -n M-H resize-pane -L 2
+          bind-key -n M-S-Left resize-pane -L 2
           bind-key -n M-l select-pane -R
           bind-key -n M-Right select-pane -R
+          bind-key -n M-L resize-pane -R 2
+          bind-key -n M-S-Right resize-pane -R 2
         '';
       };
     };
