@@ -185,7 +185,7 @@ pkgs.writeShellScriptBin "screenshot" ''
   # "Unfreeze" monitors if needed
   function unfreeze() {
     if [ ! -z "$freeze_pid" ]; then
-      kill $freeze_pid
+      kill -9 $freeze_pid
     fi
   }
 
