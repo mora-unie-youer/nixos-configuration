@@ -25,6 +25,16 @@
       steam
       steam.run
 
+      # Virtual machines
+      libvirt
+      spice
+      spice-gtk
+      spice-protocol
+      win-spice
+      win-virtio
+      virt-manager
+      virt-viewer
+
       # Wine
       wineWowPackages.waylandFull
       wineasio
