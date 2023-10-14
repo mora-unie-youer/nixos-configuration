@@ -17,6 +17,8 @@
       bemenu
       copyq
       (discord-canary.override { withOpenASAR = true; })
+
+      (pkgs.callPackage ./programs/64gram-desktop-bin.nix {})
       (pkgs.callPackage ./programs/spotify {})
 
       # Steam
