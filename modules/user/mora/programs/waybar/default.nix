@@ -12,7 +12,7 @@
 
         modules-left = [
           # "sway/workspaces"
-          "wlr/workspaces"
+          "hyprland/workspaces"
           "sway/scratchpad"
           "sway/mode"
         ];

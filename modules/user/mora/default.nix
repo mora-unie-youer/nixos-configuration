@@ -3,7 +3,6 @@
 {
   # Importing everything related to "mora" user
   imports = [
-    ./firefox
     ./git.nix
     ./input.nix
     ./mako.nix
@@ -12,7 +11,9 @@
     ./software.nix
     ./swayidle.nix
     ./theme.nix
-    ./waybar
+
+    ./programs/firefox
+    ./programs/waybar
   ];
 
   # Configuring common user
