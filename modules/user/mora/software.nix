@@ -18,6 +18,7 @@
       bemenu
       copyq
       (discord-canary.override { withOpenASAR = true; })
+      youtube-music
 
       (pkgs.callPackage ./programs/64gram-desktop-bin.nix {})
       (pkgs.callPackage ./programs/spotify {})
