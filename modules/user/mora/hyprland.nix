@@ -8,6 +8,14 @@ in
     # Adding some Hyprland "plugins"
     home.packages = with pkgs; [ hyprpicker hyprsome' ];
 
+    # Adding 
+    xdg.configFile."hypr/hyprpaper.conf".text = ''
+      preload = /home/mora/.wallpaper.jpg
+      wallpaper = ,/home/mora/.wallpaper.jpg
+      # wallpaper = eDP-1,/home/mora/.wallpaper.jpg
+      # wallpaper = DP-5,/home/mora/.wallpaper.jpg
+    '';
+
     # Configuring Hyprland
     wayland.windowManager.hyprland = {
       enable = true;
