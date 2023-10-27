@@ -25,12 +25,20 @@ let
   };
 in
 {
-  home.pointerCursor = {
-    package = breeze-purple-cursor-theme;
-    name = "Breeze_Purple";
-    size = 24;
-    gtk.enable = true;
-    x11.enable = true;
+  home = {
+    packages = [ pkgs.libsForQt5.qtstyleplugins ];
+
+    pointerCursor = {
+      package = breeze-purple-cursor-theme;
+      name = "Breeze_Purple";
+      size = 24;
+      gtk.enable = true;
+      x11.enable = true;
+    };
+
+    sessionVariables = {
+      QT_QPA_PLATFORMTHEME = "gtk2";
+    };
   };
 
   gtk = {
