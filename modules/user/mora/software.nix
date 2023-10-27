@@ -7,6 +7,7 @@
     home.packages = with pkgs; [
       # Required packages for other packages
       gcr
+      mplus-outline-fonts.githubRelease
 
       # Shell utilities
       ffmpeg-full
