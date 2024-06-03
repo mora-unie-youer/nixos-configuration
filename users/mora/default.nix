@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pollymc, ... }:
 
 {
   imports = [
@@ -89,6 +89,9 @@
   home.packages = with pkgs; [
     sxiv
     zathura
+
+    pollymc.packages.${pkgs.system}.default
+    zulu17
 
     (pkgs.callPackage ./repo/64gram-desktop-bin.nix {})
     (pkgs.callPackage ./repo/vesktop {})

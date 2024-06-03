@@ -19,15 +19,19 @@
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
-      inputs = {
-        flake-compat.follows = "flake-compat";
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     musnix = {
       url = "github:musnix/musnix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    pollymc = {
+      url = "github:fn2006/PollyMC";
+      inputs.flake-compat.follows = "flake-compat";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -42,6 +46,7 @@
     firefox,
     lanzaboote,
     musnix,
+    pollymc,
 
     ...
   } @ inputs: let
@@ -62,7 +67,7 @@
     mkUser = additionalModules: home-manager.lib.homeManagerConfiguration rec {
       pkgs = import nixpkgs { inherit system; };
       extraSpecialArgs = {
-        inherit firefox;
+        inherit firefox pollymc;
         nur-no-pkgs = import nurpkgs { nurpkgs = pkgs; };
       };
 
