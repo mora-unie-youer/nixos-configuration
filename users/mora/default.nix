@@ -91,6 +91,7 @@
     zathura
 
     (pkgs.callPackage ./repo/64gram-desktop-bin.nix {})
+    (pkgs.callPackage ./repo/vesktop {})
   ];
 
   programs.atuin.flags = [ "--disable-up-arrow" ];
