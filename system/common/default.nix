@@ -45,7 +45,8 @@
   i18n.defaultLocale = "en_US.UTF-8";
   time.timeZone = "Etc/GMT";
   sound.enable = true;
-  environment.shells = [ pkgs.fish ];
+  environment.shells = [ pkgs.fish pkgs.nushell ];
+  environment.sessionVariables.GTK_USE_PORTAL = "1";
 
   hardware = {
     opengl = {
@@ -172,5 +173,6 @@
     enable = true;
     extraPortals = with pkgs; [ xdg-desktop-portal-gnome xdg-desktop-portal-gtk ];
     config.common.default = "*";
+    xdgOpenUsePortal = true;
   };
 }
