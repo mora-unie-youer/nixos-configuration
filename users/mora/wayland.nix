@@ -56,14 +56,14 @@ in
     '';
   };
 
-  systemd.user.services.mako = {
-    Unit.PartOf = [ "graphical-session.target" ];
-    Install.WantedBy = [ "graphical-session.target" ];
-    Service = {
-      ExecStart = "${pkgs.mako}/bin/mako";
-      Restart = "on-failure";
-    };
-  };
+  # systemd.user.services.mako = {
+  #   Unit.PartOf = [ "graphical-session.target" ];
+  #   Install.WantedBy = [ "graphical-session.target" ];
+  #   Service = {
+  #     ExecStart = "${pkgs.mako}/bin/mako";
+  #     Restart = "on-failure";
+  #   };
+  # };
 
   ###
   ### PROGRAMS

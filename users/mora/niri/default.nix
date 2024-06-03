@@ -63,6 +63,90 @@ rustPlatform.buildRustPackage {
 
   passthru.providedSessions = ["niri"];
 
+  # patchPhase = ''
+  #   patch -Np1 <<EOF
+  #   diff --git a/resources/niri-session b/resources/niri-session
+  #   index 85f6991..d54aa20 100755
+  #   --- a/resources/niri-session
+  #   +++ b/resources/niri-session
+  #   @@ -17,6 +17,9 @@ if systemctl --user -q is-active niri.service; then
+  #      exit 1
+  #    fi
+ 
+  #   +# Make sure everything in graphical-session.target is stopped
+  #   +systemctl --user start --job-mode=replace-irreversibly niri-shutdown.target
+  #   +
+  #    # Reset failed state of all user units.
+  #    systemctl --user reset-failed
+ 
+  #   @@ -38,4 +41,4 @@ systemctl --user --wait start niri.service
+  #    systemctl --user start --job-mode=replace-irreversibly niri-shutdown.target
+ 
+  #    # Unset environment that we've set.
+  #   -systemctl --user unset-environment WAYLAND_DISPLAY XDG_SESSION_TYPE XDG_CURRENT_DESKTOP NIRI_SOCKET
+  #   +systemctl --user unset-environment DISPLAY WAYLAND_DISPLAY XDG_SESSION_TYPE XDG_CURRENT_DESKTOP NIRI_SOCKET
+  #   diff --git a/src/main.rs b/src/main.rs
+  #   index b5576e8..08dafe0 100644
+  #   --- a/src/main.rs
+  #   +++ b/src/main.rs
+  #   @@ -184,6 +184,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
+  #        )
+  #        .unwrap();
+ 
+  #   +    // Set DISPLAY for children (to use xwayland-satellite)
+  #   +    env::set_var("DISPLAY", ":0");
+  #   +
+  #        // Set WAYLAND_DISPLAY for children.
+  #        let socket_name = &state.niri.socket_name;
+  #        env::set_var("WAYLAND_DISPLAY", socket_name);
+  #   @@ -264,6 +267,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
+ 
+  #    fn import_environment() {
+  #        let variables = [
+  #   +        "DISPLAY",
+  #            "WAYLAND_DISPLAY",
+  #            "XDG_CURRENT_DESKTOP",
+  #            "XDG_SESSION_TYPE",
+  #   EOF
+  # '';
+
+  # patchPhase = ''
+  #   patch -Np1 <<EOF
+  #   diff --git a/resources/niri-session b/resources/niri-session
+  #   index 85f6991..d54aa20 100755
+  #   --- a/resources/niri-session
+  #   +++ b/resources/niri-session
+  #   @@ -38,4 +41,4 @@ systemctl --user --wait start niri.service
+  #    systemctl --user start --job-mode=replace-irreversibly niri-shutdown.target
+ 
+  #    # Unset environment that we've set.
+  #   -systemctl --user unset-environment WAYLAND_DISPLAY XDG_SESSION_TYPE XDG_CURRENT_DESKTOP NIRI_SOCKET
+  #   +systemctl --user unset-environment DISPLAY WAYLAND_DISPLAY XDG_SESSION_TYPE XDG_CURRENT_DESKTOP NIRI_SOCKET
+  #   diff --git a/src/main.rs b/src/main.rs
+  #   index b5576e8..08dafe0 100644
+  #   --- a/src/main.rs
+  #   +++ b/src/main.rs
+  #   @@ -184,6 +184,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
+  #        )
+  #        .unwrap();
+ 
+  #   +    // Set DISPLAY for children (to use xwayland-satellite)
+  #   +    env::set_var("DISPLAY", ":0");
+  #   +
+  #        // Set WAYLAND_DISPLAY for children.
+  #        let socket_name = &state.niri.socket_name;
+  #        env::set_var("WAYLAND_DISPLAY", socket_name);
+  #   @@ -264,6 +267,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
+ 
+  #    fn import_environment() {
+  #        let variables = [
+  #   +        "DISPLAY",
+  #            "WAYLAND_DISPLAY",
+  #            "XDG_CURRENT_DESKTOP",
+  #            "XDG_SESSION_TYPE",
+  #   EOF
+  # '';
+
   postPatch = ''
     patchShebangs ./resources/niri-session
     substituteInPlace ./resources/niri.service \
