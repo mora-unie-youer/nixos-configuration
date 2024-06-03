@@ -167,11 +167,31 @@
     };
   };
 
-  # Enabling XDG Portal here as Flatpak requires it...
-  # NOTE: For now I'm trying to move XDG Portals to user configuration...
-  xdg.portal = {
+  # NOTE: Enabling XDG Portal here as Flatpak requires it...
+  #       For now I'm trying to move XDG Portals to user configuration...
+  xdg.portal = let
+    xdg-desktop-portal-gtk' = pkgs.xdg-desktop-portal-gtk.overrideAttrs (prev: {
+      patchPhase = ''
+        patch -Np1 <<EOF
+        diff --git a/data/xdg-desktop-portal-gtk.service.in b/data/xdg-desktop-portal-gtk.service.in
+        index b82a039..2f3c09a 100644
+        --- a/data/xdg-desktop-portal-gtk.service.in
+        +++ b/data/xdg-desktop-portal-gtk.service.in
+        @@ -1,5 +1,8 @@
+         [Unit]
+         Description=Portal service (GTK/GNOME implementation)
+        +After=graphical-session.target
+        +Requisite=graphical-session.target
+        +PartOf=graphical-session.target
+ 
+         [Service]
+         Type=dbus
+        EOF
+      '';
+    });
+  in {
     enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-gnome xdg-desktop-portal-gtk ];
+    extraPortals = with pkgs; [ xdg-desktop-portal-gnome xdg-desktop-portal-gtk' ];
     config.common.default = "*";
     xdgOpenUsePortal = true;
   };
