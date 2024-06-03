@@ -55,7 +55,7 @@
 
       extraSpecialArgs = {};
       modules = [
-        ./user/common
+        ./users/common
       ] ++ additionalModules;
     };
   in {
