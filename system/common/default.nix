@@ -165,4 +165,12 @@
       };
     };
   };
+
+  # Enabling XDG Portal here as Flatpak requires it...
+  # NOTE: For now I'm trying to move XDG Portals to user configuration...
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [ xdg-desktop-portal-gnome xdg-desktop-portal-gtk ];
+    config.common.default = "*";
+  };
 }
