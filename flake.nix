@@ -4,11 +4,18 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nurpkgs.url = "github:nix-community/NUR";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+
+    firefox = {
+      url = "github:colemickens/flake-firefox-nightly";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
@@ -29,8 +36,10 @@
     self,
 
     nixpkgs,
+    nurpkgs,
     home-manager,
 
+    firefox,
     lanzaboote,
     musnix,
 
@@ -50,11 +59,16 @@
       ] ++ additionalModules;
     };
 
-    mkUser = additionalModules: home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
+    mkUser = additionalModules: home-manager.lib.homeManagerConfiguration rec {
+      pkgs = import nixpkgs { inherit system; };
+      extraSpecialArgs = {
+        inherit firefox;
+        nur-no-pkgs = import nurpkgs { nurpkgs = pkgs; };
+      };
 
-      extraSpecialArgs = {};
       modules = [
+        { nixpkgs.overlays = [ nurpkgs.overlay ]; }
+
         ./users/common
       ] ++ additionalModules;
     };
