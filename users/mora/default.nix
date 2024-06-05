@@ -95,6 +95,8 @@
 
     (pkgs.callPackage ./repo/64gram-desktop-bin.nix {})
     (pkgs.callPackage ./repo/vesktop {})
+
+    (pkgs.callPackage ./repo/osu.nix {})
   ];
 
   programs.atuin.flags = [ "--disable-up-arrow" ];
