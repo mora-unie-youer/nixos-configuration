@@ -90,6 +90,9 @@
     sxiv
     zathura
 
+    ffmpeg
+    obs-studio
+
     pollymc.packages.${pkgs.system}.default
     zulu17
 
