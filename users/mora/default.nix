@@ -88,6 +88,7 @@
   ### PROGRAMS
   ###
   home.packages = with pkgs; [
+    libreoffice-still
     sxiv
     zathura
 
