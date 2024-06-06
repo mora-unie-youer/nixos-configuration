@@ -91,6 +91,18 @@
     sxiv
     zathura
 
+    element-desktop
+    (pkgs.writeShellScriptBin "x2wayland" ''
+      type=$(xclip -sel c -t TARGETS -o | grep -P '^[a-z]+/[a-z]+$' | bemenu --single-instance)
+      xclip -sel c -t "$type" -o | wl-copy -t "$type"
+    '')
+
+    (pkgs.writeShellScriptBin "wayland2x" ''
+      type=$(wl-paste -l | grep -P '^[a-z]+/[a-z]+$' | bemenu --single-instance)
+      wl-paste -t "$type" | xclip -selection clipboard -t "$type" -i
+    '')
+
+
     ffmpeg
     obs-studio
 
