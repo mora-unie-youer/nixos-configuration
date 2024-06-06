@@ -3,6 +3,7 @@
 {
   imports = [
     ./firefox
+    ./mpv.nix
     ./wayland.nix
   ];
 
