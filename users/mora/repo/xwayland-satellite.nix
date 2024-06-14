@@ -14,19 +14,16 @@
 
 rustPlatform.buildRustPackage rec {  
   pname = "xwayland-satellite";
-  version = "02bee5aea7d4e95abad5c6792f6caab1190a1e68";
+  version = "5e7f2df05e0e0307e7b0fcebd24194a09f8d2567";
 
   src = fetchFromGitHub {
     owner = "Supreeeme";
     repo = "xwayland-satellite";
     rev = version;
-    # sha256 = "sha256-/ozAYc+hkCugIBw5w9u/A+4rVgOhpO2V2u1eaMXsa9U=";
-    sha256 = "sha256-zdQwzUzaTx/+OIo6hHbi2GwhGFAbsogqWVKfy2H3Mro=";
+    sha256 = "sha256-L5jOU34bPf/BqsuDZK1JzVgBWwgzFm0auPYkZ6RjB0k=";
   };
 
-  # cargoSha256 = "sha256-NfIanS7IMXC+Cc2pk8zeWHz418hmamUnQVXvlwY6ijY=";
-  cargoSha256 = "sha256-o4BkKIRRTz6SQqb2QNW6dZh0Gg/WbTesa1bdP0D6XDs=";
-
+  cargoSha256 = "sha256-631l9iV83sgnY+kkaXnTYOLeBShs4r73wEmPb73TCfM=";
   doCheck = false;
 
   LIBCLANG_PATH = lib.makeLibraryPath [ llvmPackages.libclang.lib ];  BINDGEN_EXTRA_CLANG_ARGS =
