@@ -79,6 +79,7 @@ in
     copyq
     xclip
     xwayland
+    xwayland-satellite
     wl-clipboard
   ];
 
