@@ -195,4 +195,32 @@
     config.common.default = "*";
     xdgOpenUsePortal = true;
   };
+
+  ###
+  ### NIX-LD
+  ###
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    fuse3
+    icu
+    nss
+    expat
+
+    libudev0-shim
+    udev
+
+    openal
+    libsoundio
+    sndio
+    pulseaudio
+
+    zlib
+    openssl
+    curl
+
+    gtk3
+    libGL
+    vulkan-loader
+    xorg.libX11
+  ];
 }
