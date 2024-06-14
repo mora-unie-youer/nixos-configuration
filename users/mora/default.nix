@@ -12,7 +12,9 @@
   ###
   home.username = "mora";
   home.homeDirectory = "/home/mora";
-  home.sessionVariables = {};
+  home.sessionVariables = {
+    GTK_USE_PORTAL = 1;
+  };
 
   ### 
   ### NIXPKGS
@@ -92,6 +94,8 @@
     sxiv
     zathura
 
+    anydesk
+
     element-desktop
     (pkgs.writeShellScriptBin "x2wayland" ''
       type=$(xclip -sel c -t TARGETS -o | grep -P '^[a-z]+/[a-z]+$' | bemenu --single-instance)
@@ -106,9 +110,13 @@
 
     ffmpeg
     obs-studio
+    youtube-music
 
     pollymc.packages.${pkgs.system}.default
     zulu17
+
+    bottles
+    qbittorrent
 
     (pkgs.callPackage ./repo/64gram-desktop-bin.nix {})
     (pkgs.callPackage ./repo/vesktop {})
