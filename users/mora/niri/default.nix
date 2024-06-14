@@ -24,14 +24,14 @@ rustPlatform.buildRustPackage {
   src = fetchFromGitHub {
     owner = "YaLTeR";
     repo = "niri";
-    rev = "bcca03cce7da9dc4125aa34943041cb65e0fd4bb";
-    hash = "sha256-slcyV/LoXYRIwhHJI3SBpWRBRnONsT0dH26mvBs8Bos=";
+    rev = "22a948cc759498923c1e9806580962cdd2d7b3e2";
+    hash = "sha256-xAcK+PKIR1Z12fDMHlr2e0jzO9eIFHmRtCc8lp8MQNM=";
   };
 
   cargoLock = {
     lockFile = ./Cargo.lock;
     outputHashes = {
-      "smithay-0.3.0" = "sha256-UzX5pws8yxJhXdKIDzu6uw+PlVLRS9U9ZAfQovKv0w0=";
+      "smithay-0.3.0" = "sha256-sCtxecXC8XVQ2M5G847GSGwkYnZZYIY/PdUA8DRAhjg=";
     };
   };
 
