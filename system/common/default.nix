@@ -218,9 +218,20 @@
     openssl
     curl
 
-    gtk3
+    freetype
+    fontconfig
     libGL
     vulkan-loader
+
+    glib
+    gtk2
+    gtk3
+    gtk4
+
     xorg.libX11
+    xorg.libXext
+    xorg.libXi
+    xorg.libXrender
+    xorg.libXtst
   ];
 }
