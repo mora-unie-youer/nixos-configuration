@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./development.nix
     ./firefox
     ./mpv.nix
     ./wayland.nix
