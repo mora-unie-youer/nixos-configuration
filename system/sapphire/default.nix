@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... }:
 
+let
+  corefreq' = pkgs.callPackage ./corefreq.nix { inherit (config.boot.kernelPackages) kernel; };
+in
 {
   ###
   ### FILESYSTEM
@@ -21,7 +24,10 @@
   boot = {
     kernelModules = [ "corefreqk" "kvm-amd" ];
     kernelPackages = pkgs.linuxPackages_zen;
-    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback zenpower ];
+
+    extraModulePackages = with config.boot.kernelPackages; [
+      v4l2loopback zenpower corefreq'
+    ];
 
     initrd = {
       availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
@@ -68,9 +74,24 @@
   ###
   ### SOFTWARE
   ###
+  environment.systemPackages = [ corefreq' ];
+
   services = {
     flatpak.enable = true;
     resolved.enable = true;
     yggdrasil.configFile = ../../secrets/yggdrasil-sapphire.conf;
+  };
+
+  systemd.services.corefreqd = {
+    enable = true;
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${corefreq'}/bin/corefreqd -q";
+      ExecStop = "${pkgs.util-linux}/bin/kill -QUIT $MAINPID";
+      RemainAfterExit = "no";
+      SuccessExitStatus = "SIGQUIT SIGUSR1 SIGTERM";
+    };
   };
 }
