@@ -56,7 +56,7 @@ in
 
   networking = {
     hostName = "sapphire";
-    interfaces.enp7s0.useDHCP = true;
+    interfaces.enp42s0.useDHCP = true;
     networkmanager.enable = true;
 
     firewall = {
