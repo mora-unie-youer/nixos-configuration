@@ -86,6 +86,7 @@
     file p7zip unrar zip
     curl wget
     git git-crypt
+    htop
   ];
 
   fonts = {
